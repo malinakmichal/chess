@@ -24,7 +24,13 @@ The artificial intelligence we developed performs better than an average player.
 
 ``` sh
     conda create -n chess python=3.9 -y
+```
+``` sh
     conda activate chess
+```
+``` sh
     pip install -r requirements.txt
+```
+``` sh
     python main.py
 ```
