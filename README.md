@@ -1,47 +1,30 @@
-### Chess
+# Chess  
 
-## 1. Úvod
-Práce se zabývá implementací umělé
-inteligence do hry šachy. Je to poměrně složitý problém,
-jelikož existuje velké množství tahů. Není
-možné tedy projít všechna možná řešení a vybrat to
-nejlepší, protože již po 4 tazích existuje asi 168421
-možných kombinací a toto číslo roste exponenciálně.
-Zatím nebyla nalezena perfektní strategie pro tuto
-hru.
+## 1. Introduction  
+This work focuses on the implementation of artificial intelligence in the game of chess. It is a rather complex problem due to the vast number of possible moves. It is not feasible to evaluate all possible solutions and select the best one, as after just four moves, there are approximately 168,421 possible combinations, and this number grows exponentially. A perfect strategy for this game has not yet been found.  
+
+## 2. Methods and Algorithms  
+I used the minimax algorithm together with alpha-beta pruning. The score for the minimax algorithm was calculated using a heuristic function.  
+
+### 2.1 Minimax  
+The algorithm evaluates all possible moves using recursion up to a depth of 4 and selects the one most advantageous for the player. At each level of recursion, the selection alternates between maximizing and minimizing the evaluation score, depending on whose turn it is.  
+
+### 2.2 Heuristic Function  
+The function evaluates the current positions of the pieces on the board and determines which player has the advantage. The value is calculated as the sum of the piece values for one color minus the sum of the piece values for the other color, where each piece has its own value based on its capabilities. Additional evaluation criteria are introduced, such as the distance of a pawn from its starting position or the positioning of pieces around the center of the board.  
+
+### 2.3 Alpha-Beta Pruning  
+The algorithm keeps track of alpha and beta values and discards branches that do not improve the move evaluation. This pruning significantly reduces the number of positions that need to be examined, thereby improving time complexity. This allows for deeper recursion and, consequently, more accurate moves.  
+
+## 3. Results  
+The artificial intelligence we developed performs better than an average player. Further improvements could involve enhancing the heuristic function and incorporating well-known opening sequences. To achieve even greater improvements, a different approach, such as neural networks, would be required.
 
 
-## 2. Metody a algoritmy
-Použil jsem algoritmus minimax společně s alphabeta
-ořezáváním. Skóre algoritmu minimax jsem
-vypočítal pomocí heuristické funkce.
 
-# 2.1 Minimax
-Algoritmus projde všchny tahy pomocí rekurze do
-hloubky 4 a zvolí ten, který je pro hráče nejvýhodnější.
-Na jednotlivých hladinách rekurze se střídá
-výběr tahu z maxima a minima daného ohodnocení,
-podle toho kdo je na tahu.
-# 2.2 Heuristická funkce
-Funkce ohodnocuje aktuální postavení figurek na
-hrací desce a určuje, který hráč je ve výhodě. Hodnota
-je vypočtena jako suma hodnot figurek jedné
-barvy mínus suma hodnot figurek druhé barvy, kde
-každá figurka má vlastní hodnotu podle její schopností.
-Zavedeny jsou další vyhodnocovací kritéria
-jako např. vzdálenost pešce od startovního pole
-nebo pozice figurek okolo středu hrací desky.
-# 2.3 Alpha-beta ořezávání
-Algoritmus si pamatuje hodnoty alpha a beta a pokud
-narazí na větev, která nepřinese zlepšení ohodnocení
-tahu větev zahodí. Takové zahození značně
-redukuje počet pozic, které je nutno projít a tím
-zlepšuje časovou složitost. To nám umožní používat
-vetšího zanoření rekurze a tudíž přesnější tahy.
+## 4. Running locally
 
-## 3 Výsledky
-Námi vytvořená umělá inteligence má lepší výkonost
-než průmerný hráč. Další vylepšení by spočívalo ve
-zlepšení heuristické funkce a zavedením známých
-zahajovacích sekvencí. K dalšímu vylepšení by bylo
-potřeba použít jiný přístup (neuronové sítě).
+``` sh
+    conda create -n chess python=3.9 -y
+    conda activate chess
+    pip install -r requirements.txt
+    python main.py
+```
